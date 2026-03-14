@@ -5,9 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Menu, X, Sparkles } from "lucide-react";
-import Button from "@/components/ui/Button";
 
-const navigation = [
+const mainNav = [
   { name: "Showcase", href: "/showcase" },
   { name: "Podcast", href: "/podcast" },
   { name: "Guides", href: "/guides" },
@@ -20,96 +19,81 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center shadow-sm">
-              <Sparkles className="w-4 h-4 text-white" />
-            </div>
-            <span className="text-lg font-bold text-foreground">
-              Vibe<span className="gradient-text">Coded</span>
-            </span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={cn(
-                  "px-3 py-2 text-sm font-medium rounded-lg transition-colors",
-                  pathname === item.href || pathname?.startsWith(item.href + "/")
-                    ? "text-primary bg-primary-light"
-                    : "text-muted hover:text-foreground hover:bg-secondary"
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link href="/newsletter">
-              <Button variant="outline" size="sm">
-                Newsletter
-              </Button>
-            </Link>
-            <Link href="/academy">
-              <Button size="sm">Start Learning</Button>
-            </Link>
+    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+      <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2">
+          <div className="w-7 h-7 rounded-md bg-primary flex items-center justify-center">
+            <Sparkles className="w-3.5 h-3.5 text-white" />
           </div>
+          <span className="text-sm font-bold text-gray-900">VibeCoded</span>
+        </Link>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 rounded-lg hover:bg-secondary transition-colors"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? (
-              <X className="w-5 h-5 text-foreground" />
-            ) : (
-              <Menu className="w-5 h-5 text-foreground" />
-            )}
-          </button>
-        </div>
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-1">
+          {mainNav.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={cn(
+                "px-3 py-1.5 text-sm rounded-md transition-colors",
+                pathname === item.href || pathname?.startsWith(item.href + "/")
+                  ? "text-primary font-medium"
+                  : "text-gray-500 hover:text-gray-900"
+              )}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Desktop CTA */}
+        <Link
+          href="/newsletter"
+          className="hidden md:block text-sm text-gray-500 hover:text-gray-900 transition-colors"
+        >
+          Newsletter
+        </Link>
+
+        {/* Mobile toggle */}
+        <button
+          className="md:hidden p-1.5 rounded-md hover:bg-gray-100 transition-colors"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Menu"
+        >
+          {mobileOpen ? (
+            <X className="w-5 h-5 text-gray-600" />
+          ) : (
+            <Menu className="w-5 h-5 text-gray-600" />
+          )}
+        </button>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Nav */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-border bg-white">
-          <div className="px-4 py-4 space-y-1">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                className={cn(
-                  "block px-3 py-2.5 text-sm font-medium rounded-lg transition-colors",
-                  pathname === item.href || pathname?.startsWith(item.href + "/")
-                    ? "text-primary bg-primary-light"
-                    : "text-muted hover:text-foreground hover:bg-secondary"
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <div className="pt-3 space-y-2 border-t border-border mt-3">
-              <Link href="/newsletter" onClick={() => setMobileOpen(false)}>
-                <Button variant="outline" size="sm" className="w-full">
-                  Newsletter
-                </Button>
-              </Link>
-              <Link href="/academy" onClick={() => setMobileOpen(false)}>
-                <Button size="sm" className="w-full">
-                  Start Learning
-                </Button>
-              </Link>
-            </div>
-          </div>
+        <div className="md:hidden border-t border-gray-100 bg-white px-6 py-4 space-y-1">
+          {mainNav.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              onClick={() => setMobileOpen(false)}
+              className={cn(
+                "block px-3 py-2 text-sm rounded-md transition-colors",
+                pathname === item.href || pathname?.startsWith(item.href + "/")
+                  ? "text-primary font-medium bg-primary-light"
+                  : "text-gray-600 hover:bg-gray-50"
+              )}
+            >
+              {item.name}
+            </Link>
+          ))}
+          <Link
+            href="/newsletter"
+            onClick={() => setMobileOpen(false)}
+            className="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md"
+          >
+            Newsletter
+          </Link>
         </div>
       )}
     </header>
