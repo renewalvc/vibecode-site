@@ -1,0 +1,158 @@
+export interface ShowcaseProject {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  creator: string;
+  creatorAvatar: string;
+  thumbnail: string;
+  url: string;
+  upvotes: number;
+  category: string;
+  tags: string[];
+  builtWith: string[];
+  launchDate: string;
+  featured: boolean;
+}
+
+export const showcaseProjects: ShowcaseProject[] = [
+  {
+    id: "1",
+    name: "MealPlanAI",
+    tagline: "AI-powered weekly meal plans tailored to your dietary needs",
+    description: "MealPlanAI generates personalized weekly meal plans based on your dietary preferences, allergies, budget, and available cooking time. Built entirely with Claude Code in a single weekend, it features automatic grocery list generation, nutritional breakdowns, and integration with Instacart for one-click ordering. The creator, a nutritionist with no prior coding experience, wanted to solve her own pain point of spending hours each week planning meals for clients.",
+    creator: "Nina Patel",
+    creatorAvatar: "/images/avatars/nina.jpg",
+    thumbnail: "/images/showcase/mealplanai.jpg",
+    url: "https://mealplanai.example.com",
+    upvotes: 847,
+    category: "Health & Fitness",
+    tags: ["AI", "Meal Planning", "Health", "Productivity"],
+    builtWith: ["Claude Code", "Next.js", "Supabase", "Stripe"],
+    launchDate: "2026-03-05",
+    featured: true,
+  },
+  {
+    id: "2",
+    name: "GitStory",
+    tagline: "Turn your git history into beautiful visual changelogs",
+    description: "GitStory connects to your GitHub repos and automatically generates beautiful, shareable changelogs from your commit history and pull requests. It uses AI to summarize technical changes into user-friendly release notes, complete with screenshots and categorized updates. Perfect for indie developers who want professional changelogs without the hassle of writing them manually.",
+    creator: "Tom Bakker",
+    creatorAvatar: "/images/avatars/tom.jpg",
+    thumbnail: "/images/showcase/gitstory.jpg",
+    url: "https://gitstory.example.com",
+    upvotes: 623,
+    category: "Developer Tools",
+    tags: ["Git", "Documentation", "Developer Tools", "Automation"],
+    builtWith: ["Claude Code", "React", "GitHub API", "Vercel"],
+    launchDate: "2026-02-28",
+    featured: true,
+  },
+  {
+    id: "3",
+    name: "TinyInvoice",
+    tagline: "Beautiful invoices in 30 seconds. No signup required.",
+    description: "TinyInvoice lets freelancers create professional, beautiful invoices in seconds. Just fill in the details, customize the design, and send. No account needed for basic use. Premium features include recurring invoices, payment tracking, and client management. Built by a freelance designer who was tired of ugly invoice templates and bloated invoicing software.",
+    creator: "Lena Ostrowski",
+    creatorAvatar: "/images/avatars/lena.jpg",
+    thumbnail: "/images/showcase/tinyinvoice.jpg",
+    url: "https://tinyinvoice.example.com",
+    upvotes: 512,
+    category: "Finance",
+    tags: ["Invoicing", "Freelance", "Finance", "Productivity"],
+    builtWith: ["Claude Code", "Next.js", "Tailwind CSS", "PDF Generation"],
+    launchDate: "2026-02-20",
+    featured: true,
+  },
+  {
+    id: "4",
+    name: "PetMatch",
+    tagline: "Find your perfect pet companion using AI matching",
+    description: "PetMatch uses AI to match potential pet owners with shelter animals based on lifestyle, living situation, experience, and personality. It partners with local animal shelters to display real-time available pets and uses an intelligent questionnaire to find the best matches. The app has helped facilitate over 200 adoptions since launch.",
+    creator: "David Morales",
+    creatorAvatar: "/images/avatars/david.jpg",
+    thumbnail: "/images/showcase/petmatch.jpg",
+    url: "https://petmatch.example.com",
+    upvotes: 489,
+    category: "Lifestyle",
+    tags: ["Pets", "AI Matching", "Social Good", "Lifestyle"],
+    builtWith: ["Claude Code", "Next.js", "PostgreSQL", "Google Maps API"],
+    launchDate: "2026-02-15",
+    featured: false,
+  },
+  {
+    id: "5",
+    name: "DebateClub",
+    tagline: "Practice debating any topic with an AI opponent",
+    description: "DebateClub is an educational platform where users can practice their argumentation and critical thinking skills by debating an AI opponent on any topic. The AI adapts its difficulty level, provides feedback on logical fallacies, and helps users strengthen their reasoning. Popular with students, professionals preparing for presentations, and anyone who loves a good debate.",
+    creator: "Priya Sharma",
+    creatorAvatar: "/images/avatars/priya.jpg",
+    thumbnail: "/images/showcase/debateclub.jpg",
+    url: "https://debateclub.example.com",
+    upvotes: 456,
+    category: "Education",
+    tags: ["Education", "AI", "Debate", "Critical Thinking"],
+    builtWith: ["Claude Code", "React", "Claude API", "Firebase"],
+    launchDate: "2026-02-10",
+    featured: false,
+  },
+  {
+    id: "6",
+    name: "GardenGuru",
+    tagline: "Your AI gardening assistant that knows your local climate",
+    description: "GardenGuru provides personalized gardening advice based on your exact location, soil type, and local climate data. Take a photo of a plant problem and get instant diagnosis and treatment recommendations. It includes planting calendars, watering reminders, and a community forum where gardeners share tips and photos of their harvests.",
+    creator: "Margaret Liu",
+    creatorAvatar: "/images/avatars/margaret.jpg",
+    thumbnail: "/images/showcase/gardenguru.jpg",
+    url: "https://gardenguru.example.com",
+    upvotes: 398,
+    category: "Lifestyle",
+    tags: ["Gardening", "AI", "Climate", "Community"],
+    builtWith: ["Claude Code", "Next.js", "Weather API", "Cloudinary"],
+    launchDate: "2026-02-05",
+    featured: false,
+  },
+  {
+    id: "7",
+    name: "ContractLens",
+    tagline: "Understand any contract in plain English before you sign",
+    description: "ContractLens analyzes legal contracts and translates dense legalese into plain English summaries. It highlights potentially problematic clauses, compares terms against industry standards, and flags anything unusual. Built by a paralegal who saw how many people sign contracts they don't understand. Not a replacement for legal advice, but a powerful first-pass review tool.",
+    creator: "James Okonkwo",
+    creatorAvatar: "/images/avatars/james.jpg",
+    thumbnail: "/images/showcase/contractlens.jpg",
+    url: "https://contractlens.example.com",
+    upvotes: 371,
+    category: "Productivity",
+    tags: ["Legal", "AI", "Contracts", "Productivity"],
+    builtWith: ["Claude Code", "Next.js", "Claude API", "Supabase"],
+    launchDate: "2026-01-28",
+    featured: false,
+  },
+  {
+    id: "8",
+    name: "BeatForge",
+    tagline: "Create royalty-free background music for your content",
+    description: "BeatForge lets content creators generate custom royalty-free background music by describing the mood, tempo, and style they want. It produces professional-quality tracks perfect for YouTube videos, podcasts, and social media content. No musical knowledge required — just describe what you want and get a unique track in minutes.",
+    creator: "Ryan Torres",
+    creatorAvatar: "/images/avatars/ryan.jpg",
+    thumbnail: "/images/showcase/beatforge.jpg",
+    url: "https://beatforge.example.com",
+    upvotes: 334,
+    category: "Creative Tools",
+    tags: ["Music", "AI Generation", "Content Creation", "Audio"],
+    builtWith: ["Claude Code", "React", "Web Audio API", "FFmpeg"],
+    launchDate: "2026-01-20",
+    featured: false,
+  },
+];
+
+export const showcaseCategories = [
+  "All",
+  "Developer Tools",
+  "Productivity",
+  "Health & Fitness",
+  "Education",
+  "Finance",
+  "Lifestyle",
+  "Creative Tools",
+];
