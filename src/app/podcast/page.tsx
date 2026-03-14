@@ -11,43 +11,53 @@ export const metadata: Metadata = {
 
 export default function PodcastPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <section className="max-w-3xl mx-auto px-4 sm:px-6 pt-16 pb-10">
-        <h1 className="text-3xl font-bold text-foreground tracking-tight">
-          Podcast
-        </h1>
-        <p className="text-muted mt-2">
-          Conversations with builders creating software with AI tools.
-        </p>
-      </section>
+    <div className="min-h-screen">
+      {/* Header */}
+      <div className="border-b border-border">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 py-16">
+          <h1 className="text-3xl font-bold text-foreground">Podcast</h1>
+          <p className="text-muted mt-2">
+            Weekly conversations with builders creating software with AI tools.
+          </p>
+        </div>
+      </div>
 
-      <section className="max-w-3xl mx-auto px-4 sm:px-6 pb-16">
-        <div className="divide-y divide-border">
+      {/* Episode List */}
+      <div className="max-w-4xl mx-auto px-6 sm:px-8 py-10">
+        <p className="text-sm text-muted mb-6">
+          {podcastEpisodes.length} episodes
+        </p>
+
+        <div className="rounded-xl border border-border bg-white overflow-hidden shadow-sm divide-y divide-border">
           {podcastEpisodes.map((episode) => (
-            <div key={episode.id} className="py-8 first:pt-0">
+            <Link
+              key={episode.id}
+              href={`/podcast/${episode.slug}`}
+              className="block p-6 hover:bg-surface/50 transition-colors group"
+            >
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted mb-2">
-                <span>Ep. {episode.episodeNumber}</span>
-                <span className="text-border">·</span>
+                <span className="font-medium">
+                  Ep. {episode.episodeNumber}
+                </span>
+                <span className="text-border">&middot;</span>
                 <span>{formatDate(episode.date)}</span>
-                <span className="text-border">·</span>
+                <span className="text-border">&middot;</span>
                 <span>{formatDuration(episode.duration)}</span>
               </div>
 
-              <Link
-                href={`/podcast/${episode.slug}`}
-                className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
-              >
+              <h2 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                 {episode.title}
-              </Link>
+              </h2>
 
               <p className="text-sm text-primary mt-1">
                 {episode.guest}
                 <span className="text-muted font-normal">
-                  {" "}&middot; {episode.guestTitle}
+                  {" "}
+                  &middot; {episode.guestTitle}
                 </span>
               </p>
 
-              <p className="text-sm text-muted mt-2 line-clamp-2 leading-relaxed">
+              <p className="text-sm text-muted mt-3 line-clamp-2 leading-relaxed max-w-2xl">
                 {episode.description}
               </p>
 
@@ -56,24 +66,42 @@ export default function PodcastPage() {
                   {episode.topics.map((topic) => (
                     <span
                       key={topic}
-                      className="text-xs text-muted bg-gray-100 px-2 py-0.5 rounded-full"
+                      className="text-xs text-muted bg-surface px-2 py-0.5 rounded-full"
                     >
                       {topic}
                     </span>
                   ))}
                 </div>
               )}
-            </div>
+            </Link>
           ))}
         </div>
 
-        <div className="border-t border-border pt-8 mt-4 text-sm text-muted">
+        <div className="mt-8 text-sm text-muted">
           Also available on{" "}
-          <a href="#" className="text-foreground hover:text-primary underline">Apple Podcasts</a>,{" "}
-          <a href="#" className="text-foreground hover:text-primary underline">Spotify</a>, and{" "}
-          <a href="#" className="text-foreground hover:text-primary underline">YouTube</a>.
+          <a
+            href="#"
+            className="text-foreground hover:text-primary underline underline-offset-2"
+          >
+            Apple Podcasts
+          </a>
+          ,{" "}
+          <a
+            href="#"
+            className="text-foreground hover:text-primary underline underline-offset-2"
+          >
+            Spotify
+          </a>
+          , and{" "}
+          <a
+            href="#"
+            className="text-foreground hover:text-primary underline underline-offset-2"
+          >
+            YouTube
+          </a>
+          .
         </div>
-      </section>
+      </div>
     </div>
   );
 }
